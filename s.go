@@ -10,11 +10,10 @@ import (
 
 var wg sync.WaitGroup
 
-func getStock(x int) {
-	for i := 1; i <= 12; i++ {
-		fmt.Printf("%d x %d = %d\n", i, x, i*x)
-		// time.Sleep(100 * time.Millisecond)
-	}
+func getStock(s string) {
+	//for i := 1; i <= 12; i++ {
+        fmt.Printf("%s \n", s)
+        // time.Sleep(100 * time.Millisecond)
 	wg.Done()
 }
 
@@ -44,10 +43,14 @@ func readFile() []string {
 }
 
 func main() {
-	// don't do error checking yet
+	// slice of ticker symbols
         var sl []string
         sl = readFile()
-        fmt.Printf("sl(%d): %s\n", len(sl), sl)
+        //fmt.Printf("sl(%d): %s\n", len(sl), sl)
+        for i, s := range sl {
+            fmt.Printf("sl[%d] %s\n", i, s)
+        }
+
 	/*for n := 2; n <= 12; n++ {
 		wg.Add(1)
 		go getStock(n)
