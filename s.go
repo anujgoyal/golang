@@ -26,17 +26,11 @@ func getStock(s string) {
         // get url, https://golang.org/pkg/net/http/
 	resp, err := http.Get(url)
 	if err != nil {
-		log.Fatalf("http.Get => %v", err.Error())
+		//log.Fatalf("http.Get => %v", err.Error())
+		fmt.Printf("http.Get => %s\n", err.Error())
 	}
-        defer resp.Body.Close()
-//https://stackoverflow.com/questions/16784419/in-golang-how-to-determine-the-final-url-after-a-series-of-redirects
-        //finalURL := resp.Request.URL.String()
-        //fmt.Printf("The URL you ended up at is: %v\n", finalURL)
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalf("ioutil.ReadAll => %v",err.Error())
-	}
+	body, _:= ioutil.ReadAll(resp.Body)
+        resp.Body.Close() // close ASAP to prevent too many open file desriptors
         // https://stackoverflow.com/questions/38673673/access-http-response-as-string-in-go
         val := string(body)
         fmt.Printf("body: %s", val)
@@ -74,8 +68,7 @@ func main() {
 	// slice of ticker symbols
 	var sl []string
 	sl = readFile("wilshire.txt")
-	//sl = readFile("stocklist.txt")
-        _ = sl
+	sl = readFile("stocklist.txt")
 	//fmt.Printf("sl(%d): %s\n", len(sl), sl)
 	//for i, s := range sl { fmt.Printf("sl[%d] %s\n", i, s) }
 
