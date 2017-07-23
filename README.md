@@ -11,3 +11,6 @@ https://www.golang-book.com/books/intro/2
 https://golang.org/doc/effective_go.html
 http://cocopon.github.io/iceberg.vim/
 https://www.dotnetperls.com/fmt-go
+https://gobyexample.com/range
+https://gobyexample.com/variables
+https://github.com/valyala/fasthttpa // faster httpclient?
