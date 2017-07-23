@@ -21,3 +21,6 @@
 * https://github.com/ti/nasync
 * http://b.oldhu.com/2012/07/19/increase-tcp-max-connections-on-mac-os-x/
 * $ sudo sysctl -w kern.ipc.somaxconn=2048
+
+# init functions
+* https://medium.com/golangspec/init-functions-in-go-eac191b3860a
