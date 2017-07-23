@@ -17,6 +17,7 @@
 * https://gobyexample.com/variables
 * https://github.com/valyala/fasthttpa // faster httpclient?
 
-# TPC connections
+# TPC connections, file descriptors
+* https://github.com/ti/nasync
 * http://b.oldhu.com/2012/07/19/increase-tcp-max-connections-on-mac-os-x/
 * $ sudo sysctl -w kern.ipc.somaxconn=2048
