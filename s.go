@@ -19,14 +19,13 @@ func getStock(x int) {
 }
 
 // https://stackoverflow.com/questions/8757389/reading-file-line-by-line-in-go
-func readFile() int {
+func readFile() []string {
         // open file
 	file, err := os.Open("stocklist.txt")
 	if err != nil { log.Fatal(err) }
 	defer file.Close()
 
-        // setup slice
-        // https://blog.golang.org/go-slices-usage-and-internals
+        // setup slice, https://blog.golang.org/go-slices-usage-and-internals
         var sl []string
         sl = make([]string, 0)
 
@@ -34,24 +33,25 @@ func readFile() int {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
                 sl = append(sl, scanner.Text())
-		fmt.Println(sl);
+		// fmt.Println(sl);
 	}
 
         // more error checking
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-        return 0
+        return sl
 }
 
 func main() {
 	// don't do error checking yet
-        var sl int
+        var sl []string
         sl = readFile()
-        fmt.Printf("sl: %d\n", sl)
+        fmt.Printf("sl(%d): %s\n", len(sl), sl)
 	/*for n := 2; n <= 12; n++ {
 		wg.Add(1)
 		go getStock(n)
 	}
 	wg.Wait()*/
 }
+
