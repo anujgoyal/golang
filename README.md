@@ -2,6 +2,7 @@
 * https://golang.org/ref/spec
 * https://blog.golang.org/slices
 * https://blog.golang.org/go-slices-usage-and-internals
+* https://github.com/golang/go/wiki/Range
 
 # containers
 * https://stackoverflow.com/questions/21326109/why-are-lists-used-infrequently-in-go
