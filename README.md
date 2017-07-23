@@ -17,10 +17,14 @@
 * https://gobyexample.com/variables
 * https://github.com/valyala/fasthttpa // faster httpclient?
 
-# TPC connections, file descriptors
+# async
 * https://github.com/ti/nasync
+
+# TPC connections, file descriptors
+* https://rolande.wordpress.com/2010/12/30/performance-tuning-the-network-stack-on-mac-osx-10-6/
 * http://b.oldhu.com/2012/07/19/increase-tcp-max-connections-on-mac-os-x/
 * $ sudo sysctl -w kern.ipc.somaxconn=2048
+* $ ulimit -n 10240
 
 # init functions
 * https://medium.com/golangspec/init-functions-in-go-eac191b3860a
