@@ -15,13 +15,13 @@ import (
 
 var wg sync.WaitGroup
 
-func getStock(s string) string {
+func getStock(s string) {
 	// https://stackoverflow.com/questions/1760757/how-to-efficiently-concatenate-strings-in-go?rq=1
 	var u1 string = "http://download.finance.yahoo.com/d/quotes.csv?s="
 	var u2 string = "&f=srp5p6m3m4m6m8j1j4y"
 	var url string = u1 + s + u2
-	//fmt.Printf("url: %s \n", url) // debugging
-	fmt.Printf("s: %s", s)
+	// fmt.Printf("s: %s", s) // debugging
+	// fmt.Printf("url: %s \n", url) // debugging
 
         // get url, https://golang.org/pkg/net/http/
 	resp, err := http.Get(url)
@@ -29,8 +29,7 @@ func getStock(s string) string {
 		log.Fatalf("http.Get => %v", err.Error())
 	}
         defer resp.Body.Close()
-
-        //https://stackoverflow.com/questions/16784419/in-golang-how-to-determine-the-final-url-after-a-series-of-redirects
+//https://stackoverflow.com/questions/16784419/in-golang-how-to-determine-the-final-url-after-a-series-of-redirects
         //finalURL := resp.Request.URL.String()
         //fmt.Printf("The URL you ended up at is: %v\n", finalURL)
 
@@ -42,7 +41,6 @@ func getStock(s string) string {
         val := string(body)
         fmt.Printf("body: %s", val)
 	wg.Done()
-        return val
 }
 
 // https://stackoverflow.com/questions/8757389/reading-file-line-by-line-in-go
@@ -75,8 +73,8 @@ func readFile(filename string) []string {
 func main() {
 	// slice of ticker symbols
 	var sl []string
-	sl = readFile("stocklist.txt")
 	sl = readFile("wilshire.txt")
+	//sl = readFile("stocklist.txt")
         _ = sl
 	//fmt.Printf("sl(%d): %s\n", len(sl), sl)
 	//for i, s := range sl { fmt.Printf("sl[%d] %s\n", i, s) }
@@ -89,3 +87,5 @@ func main() {
 	}
 	wg.Wait()
 }
+
+
