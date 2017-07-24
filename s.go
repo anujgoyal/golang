@@ -11,6 +11,7 @@ import (
 	"sync"
         "net/http"
         "io/ioutil"
+        "time"
 )
 
 var wg sync.WaitGroup
@@ -65,6 +66,7 @@ func readFile(filename string) []string {
 }
 
 func main() {
+        start := time.Now()
 	// slice of ticker symbols
 	var sl []string
 	sl = readFile("wilshire.txt")
@@ -79,6 +81,7 @@ func main() {
 		go getStock(s)
 	}
 	wg.Wait()
+        fmt.Printf("main: %.2fs elapsed.\n", time.Since(start).Seconds())
 }
 
 
