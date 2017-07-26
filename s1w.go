@@ -28,8 +28,9 @@ func getStock(s string) {
 func main() {
         start := time.Now()
 	var sl = []string{"AAPL","AMZN","GOOG","FB","NFLX"}
-        for i := 0; i<10; i++ {
-            sl = append(sl, sl)
+        // creates slice of 1280 elements
+        for i := 0; i < 10; i++ {
+            sl = append(sl, sl...)
         }
         fmt.Printf("sl(size): %d\n", len(sl))
 
