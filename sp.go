@@ -17,13 +17,13 @@ func worker(id int, jobs <-chan string, results chan<- string) {
 		resp, err := http.Get("http://goanuj.freeshell.org/go/" + j + ".txt")
 		if err != nil {
 			log.Printf(j + ": " + err.Error())
-		        fmt.Println("worker", id, "finished job", j)
+			fmt.Println("worker", id, "finished job", j)
 			results <- err.Error() // channel send
 		} else {
 			body, _ := ioutil.ReadAll(resp.Body)
 			resp.Body.Close() // close ASAP to prevent too many open file desriptors
 			val := string(body)
-		        fmt.Println("worker", id, "finished job", j)
+			fmt.Println("worker", id, "finished job", j)
 			results <- val // channel send
 		}
 	}
@@ -60,4 +60,3 @@ func main() {
 	}
 	fmt.Println("\nResults:", len(r))
 }
-
