@@ -14,7 +14,7 @@ import (
 // Generator: function that returns a channel
 func getStocks(sl []string) <-chan string {
 	c := make(chan string)
-	limit := make(chan struct{}, 20) // limit to 20 parallel operations
+	limit := make(chan struct{}, 200) // limit to N parallel operations
 	for _, s := range sl {
 		limit <- struct{}{}
 		go getStock(s, c, limit)
@@ -46,12 +46,15 @@ func main() {
 	for i := 0; i < 8; i++ {
 		sl = append(sl, sl...)
 	}
+	fmt.Printf("main: %.2fs elapsed.\n", time.Since(start).Seconds())
 	fmt.Printf("sl(size): %d\n", len(sl))
 
-	// get channel that returns only strings
-	c := getStocks(sl)
-	for i := 0; i < len(sl); i++ {
-		fmt.Printf("%s", <-c) // channel recv
+	// generator pattern, get channel back from function
+	var c = getStocks(sl)
+	var r = make([]string, len(sl), len(sl)) 
+	for i := 0; i < len(r); i++ {
+                r[i] = <-c // channel recv
+		//fmt.Printf("%s", r[i]) // channel recv
 	}
 
 	fmt.Printf("main: %.2fs elapsed.\n", time.Since(start).Seconds())
