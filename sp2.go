@@ -10,11 +10,10 @@ import (
 	"time"
 )
 
-// https://www.youtube.com/watch?v=f6kdp27TYZs (15m)
-// Generator: function that returns a channel
+// Generator: function that returns a channel; https://www.youtube.com/watch?v=f6kdp27TYZs (15m)
 func getStocks(sl []string) <-chan string {
 	c := make(chan string)
-	limit := make(chan struct{}, 200) // limit to N parallel operations
+	limit := make(chan struct{}, 2000) // limit to N parallel operations
 	for _, s := range sl {
 		limit <- struct{}{}
 		go getStock(s, c, limit)
@@ -23,7 +22,6 @@ func getStocks(sl []string) <-chan string {
 }
 
 func getStock(s string, c chan string, limit chan struct{}) {
-	// time.Sleep(500 * time.Millisecond)
 	resp, err := http.Get("http://goanuj.freeshell.org/go/" + s + ".txt")
 	if err != nil {
 		log.Printf(s + ": " + err.Error())
@@ -42,8 +40,8 @@ func getStock(s string, c chan string, limit chan struct{}) {
 func main() {
 	var start = time.Now()
 	var sl = []string{"AAPL", "AMZN", "GOOG", "FB", "NFLX"}
-	// creates slice of 1280 elements
-	for i := 0; i < 8; i++ {
+	// creates slice of 8(1280), 9(2560), 10(5120) , 11(10240) elements
+	for i := 0; i < 11; i++ {
 		sl = append(sl, sl...)
 	}
 	fmt.Printf("main: %.2fs elapsed.\n", time.Since(start).Seconds())
@@ -57,5 +55,6 @@ func main() {
 		//fmt.Printf("%s", r[i]) // channel recv
 	}
 
+        fmt.Printf("last element: %s\n", r[len(r)-1])
 	fmt.Printf("main: %.2fs elapsed.\n", time.Since(start).Seconds())
 }
