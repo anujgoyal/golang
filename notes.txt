@@ -1,0 +1,50 @@
+// 2017.07.30
+// as slice size increases, network traffic increases and time it takes to process increases
+// nb: on Intel network can have 2000 concurrent goroutines; TCP outbound port limit is 65000
+
+[1856][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 10240
+2017/07/30 18:56:48 AAPL: Get http://goanuj.freeshell.org/go/AAPL.txt: read tcp 10.252.136.82:55561->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 GOOG: Get http://goanuj.freeshell.org/go/GOOG.txt: read tcp 10.252.136.82:55563->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 FB: Get http://goanuj.freeshell.org/go/FB.txt: read tcp 10.252.136.82:55557->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 AAPL: Get http://goanuj.freeshell.org/go/AAPL.txt: read tcp 10.252.136.82:55559->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 NFLX: Get http://goanuj.freeshell.org/go/NFLX.txt: read tcp 10.252.136.82:55560->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 GOOG: Get http://goanuj.freeshell.org/go/GOOG.txt: read tcp 10.252.136.82:55562->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 GOOG: Get http://goanuj.freeshell.org/go/GOOG.txt: read tcp 10.252.136.82:55566->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:48 AMZN: Get http://goanuj.freeshell.org/go/AMZN.txt: read tcp 10.252.136.82:55564->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:53 GOOG: Get http://goanuj.freeshell.org/go/GOOG.txt: read tcp 10.252.136.82:55558->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:53 FB: Get http://goanuj.freeshell.org/go/FB.txt: read tcp 10.252.136.82:55556->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:56:53 AMZN: Get http://goanuj.freeshell.org/go/AMZN.txt: read tcp 10.252.136.82:55555->10.22.230.62:911: read: connection reset by peer
+^Csignal: interrupt
+[1857][agoyal3@mradosav-mobl:golang]$ vim sp2.go 
+[1857][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 1280
+main: 4.21s elapsed.
+[1857][agoyal3@mradosav-mobl:golang]$ vim sp2.go 
+[1858][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 2560
+main: 5.87s elapsed.
+[1858][agoyal3@mradosav-mobl:golang]$ vim sp2.go 
+[1858][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 5120
+2017/07/30 18:58:40 AAPL: Get http://goanuj.freeshell.org/go/AAPL.txt: read tcp 10.252.136.82:62982->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:58:40 FB: Get http://goanuj.freeshell.org/go/FB.txt: read tcp 10.252.136.82:62981->10.22.230.62:911: read: connection reset by peer
+2017/07/30 18:58:40 NFLX: Get http://goanuj.freeshell.org/go/NFLX.txt: read tcp 10.252.136.82:62990->10.22.230.62:911: read: connection reset by peer
+^Csignal: interrupt
+[1900][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 2560
+main: 8.07s elapsed.
+[1903][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 5120
+main: 8.02s elapsed.
+[1904][agoyal3@mradosav-mobl:golang]$ go run sp2.go
+main: 0.00s elapsed.
+sl(size): 10240
+main: 18.92s elapsed.
+[1905][agoyal3@mradosav-mobl:golang]$

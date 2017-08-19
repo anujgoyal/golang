@@ -1,11 +1,15 @@
-// https://github.com/niocs/SP500Addin/blob/master/getsp500.go
+// GNU GENERAL PUBLIC LICENSE
+// Version 3, 29 June 2007
+// Copyright © 2007 Free Software Foundation, Inc. <http://fsf.org/>
+// https://www.gnu.org/licenses/gpl-3.0.en.html
+// Derived from: https://github.com/niocs/SP500Addin/blob/master/getsp500.go
 package main
 
 import (
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
 	"os"
 	"sort"
+        "github.com/PuerkitoBio/goquery" // remember to:  go get github.com/PuerkitoBio/goquery
 )
 
 const URL string = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
@@ -34,7 +38,6 @@ func (slice SP500Items) Swap(i, j int) {
 }
 
 func main() {
-
 	doc, err := goquery.NewDocument(URL)
 	if err != nil {
 		fmt.Println("Error getting SP500 url, err =", err)
@@ -61,7 +64,6 @@ func main() {
 
 	sort.Sort(items)
 	writeCSV(items)
-	writeOUStringArray(items)
 }
 
 func writeCSV(items SP500Items) {
@@ -77,34 +79,3 @@ func writeCSV(items SP500Items) {
 	fp.Close()
 }
 
-func writeOUStringArray(items SP500Items) {
-	fp, err := os.Create("data.hxx")
-	if err != nil {
-		fmt.Println("Error writing to data.hxx : err = ", err)
-		return
-	}
-
-	fp.WriteString("#include <map>\n")
-	fp.WriteString("#include <vector>\n")
-	fp.WriteString("#include <rtl/ustring.hxx>\n\n")
-	fp.WriteString("using rtl::OUString;\n\n\n")
-	fp.WriteString("std::vector<OUString> aTickers = {\n")
-	comma := ","
-	for ii, item := range items {
-		if ii+1 == len(items) {
-			comma = ""
-		}
-		fp.WriteString(fmt.Sprintf(`    "%s"%s`+"\n", item.Ticker, comma))
-	}
-	fp.WriteString("};\n\n")
-	fp.WriteString("std::map<OUString, OUString> aTickerToName = {\n")
-	comma = ","
-	for ii, item := range items {
-		if ii+1 == len(items) {
-			comma = ""
-		}
-		fp.WriteString(fmt.Sprintf(`    {"%s", "%s"}%s`+"\n", item.Ticker, item.Name, comma))
-	}
-	fp.WriteString("};\n")
-	fp.Close()
-}

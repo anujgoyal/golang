@@ -13,7 +13,7 @@ import (
 // Generator: function that returns a channel; https://www.youtube.com/watch?v=f6kdp27TYZs (15m)
 func getStocks(sl []string) <-chan string {
 	c := make(chan string)
-	limit := make(chan struct{}, 2000) // limit to N parallel operations
+	limit := make(chan struct{}, 200) // limit to N parallel operations
 	for _, s := range sl {
 		limit <- struct{}{}
 		go getStock(s, c, limit)
