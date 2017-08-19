@@ -40,3 +40,6 @@
 
 # random
 * https://guides.github.com/features/mastering-markdown/
+
+# stock, get SPX
+* getsp500.go
