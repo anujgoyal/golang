@@ -14,7 +14,10 @@ import (
 func getStocks(sl []string) <-chan string {
 	c := make(chan string)
 	limit := make(chan struct{}, 200) // limit to N parallel operations
-	for _, s := range sl {
+
+        // kick off 'sl' threads
+	for i, s := range sl {
+                //fmt.Printf("getting stock: %d\n", i) // DEBUG
 		limit <- struct{}{}
 		go getStock(s, c, limit)
 	}
@@ -41,7 +44,7 @@ func main() {
 	var start = time.Now()
 	var sl = []string{"AAPL", "AMZN", "GOOG", "FB", "NFLX"}
 	// creates slice of 8(1280), 9(2560), 10(5120) , 11(10240) elements
-	for i := 0; i < 11; i++ {
+	for i := 0; i < 7; i++ {
 		sl = append(sl, sl...)
 	}
 	fmt.Printf("main: %.2fs elapsed.\n", time.Since(start).Seconds())
@@ -52,7 +55,7 @@ func main() {
 	var r = make([]string, len(sl), len(sl)) 
 	for i := 0; i < len(r); i++ {
                 r[i] = <-c // channel recv
-		//fmt.Printf("%s", r[i]) // channel recv
+                //fmt.Printf("%d : %s", i, r[i]) // DEBUG: channel recv
 	}
 
         fmt.Printf("last element: %s\n", r[len(r)-1])
