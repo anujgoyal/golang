@@ -43,3 +43,11 @@
 
 # stock, get SPX
 * go run getsp500.go
+
+# gofinance
+* $ go get github.com/aktau/gofinance/gofinance
+* package github.com/aktau/gofinance/gofinance: cannot find package "github.com/aktau/gofinance/gofinance" in any of:
+* /usr/local/Cellar/go/1.9/libexec/src/github.com/aktau/gofinance/gofinance (from $GOROOT)
+* /Users/agoyal3/go/src/github.com/aktau/gofinance/gofinance (from $GOPATH)
+
+
