@@ -46,7 +46,8 @@ APA,Apache Corporation
 APC,Anadarko Petroleum Corp
 APD,Air Products & Chemicals Inc
 APH,Amphenol Corp
-ARE,Alexandria Real Estate Equities Inc
+APTV,Aptiv Plc
+ARE,Alexandria Real Estate Equities
 ARNC,Arconic Inc
 ATVI,Activision Blizzard
 AVB,AvalonBay Communities, Inc.
@@ -61,7 +62,6 @@ BAC,Bank of America Corp
 BAX,Baxter International Inc.
 BBT,BB&T Corporation
 BBY,Best Buy Co. Inc.
-BCR,Bard (C.R.) Inc.
 BDX,Becton Dickinson
 BEN,Franklin Resources
 BF.B,Brown-Forman Corp.
@@ -87,6 +87,7 @@ CBOE,CBOE Holdings
 CBS,CBS Corp.
 CCI,Crown Castle International Corp.
 CCL,Carnival Corp.
+CDNS,Cadence Design Systems
 CELG,Celgene Corp.
 CERN,Cerner
 CF,CF Industries Holdings Inc
@@ -109,7 +110,6 @@ CNC,Centene Corporation
 CNP,CenterPoint Energy
 COF,Capital One Financial
 COG,Cabot Oil & Gas
-COH,Coach Inc.
 COL,Rockwell Collins
 COO,The Cooper Companies
 COP,ConocoPhillips
@@ -129,7 +129,6 @@ CVX,Chevron Corp.
 CXO,Concho Resources
 D,Dominion Energy
 DAL,Delta Air Lines
-DD,Du Pont (E.I.)
 DE,Deere & Co.
 DFS,Discover Financial Services
 DG,Dollar General
@@ -140,18 +139,17 @@ DIS,The Walt Disney Company
 DISCA,Discovery Communications
 DISCK,Discovery Communications
 DISH,Dish Network
-DLPH,Delphi Automotive
 DLR,Digital Realty
 DLTR,Dollar Tree
 DOV,Dover Corp.
-DOW,Dow Chemical
 DPS,Dr Pepper Snapple Group
-DRE,Duke Realty Corp
+DRE,Duke Realty
 DRI,Darden Restaurants
 DTE,DTE Energy
 DUK,Duke Energy
 DVA,DaVita
 DVN,Devon Energy
+DWDP,DowDuPont
 DXC,DXC Technology
 EA,Electronic Arts
 EBAY,eBay
@@ -225,6 +223,7 @@ HCP,HCP Inc.
 HD,Home Depot
 HES,Hess Corporation
 HIG,Hartford Financial Svc.Gp.
+HII,Huntington Ingalls Industries
 HLT,Hilton Worldwide
 HOG,Harley-Davidson
 HOLX,Hologic
@@ -250,6 +249,7 @@ INTC,Intel Corp.
 INTU,Intuit
 IP,International Paper
 IPG,Interpublic Group
+IQV,IQVIA
 IR,Ingersoll-Rand PLC
 IRM,Iron Mountain Incorporated
 ISRG,Intuitive Surgical Inc.
@@ -291,7 +291,6 @@ LOW,Lowe's Cos.
 LRCX,Lam Research
 LUK,Leucadia National Corp.
 LUV,Southwest Airlines
-LVLT,Level 3 Communications
 LYB,LyondellBasell
 M,Macy's Inc.
 MA,Mastercard Inc.
@@ -329,6 +328,7 @@ MU,Micron Technology
 MYL,Mylan N.V.
 NAVI,Navient
 NBL,Noble Energy Inc
+NCLH,Norwegian Cruise Line
 NDAQ,Nasdaq, Inc.
 NEE,NextEra Energy
 NEM,Newmont Mining Corporation
@@ -389,7 +389,7 @@ PYPL,PayPal
 QCOM,QUALCOMM Inc.
 QRVO,Qorvo
 RCL,Royal Caribbean Cruises Ltd
-RE,Everest Re Group
+RE,Everest Re
 REG,Regency Centers Corporation
 REGN,Regeneron
 RF,Regions Financial Corp.
@@ -404,6 +404,7 @@ ROST,Ross Stores
 RRC,Range Resources Corp.
 RSG,Republic Services Inc
 RTN,Raytheon Co.
+SBAC,SBA Communications
 SBUX,Starbucks Corp.
 SCG,SCANA Corp
 SCHW,Charles Schwab Corporation
@@ -419,7 +420,6 @@ SNPS,Synopsys Inc.
 SO,Southern Co.
 SPG,Simon Property Group Inc
 SPGI,S&P Global, Inc.
-SPLS,Staples Inc.
 SRCL,Stericycle Inc
 SRE,Sempra Energy
 STI,SunTrust Banks
@@ -441,6 +441,7 @@ TIF,Tiffany & Co.
 TJX,TJX Companies Inc.
 TMK,Torchmark Corp.
 TMO,Thermo Fisher Scientific
+TPR,Tapestry, Inc.
 TRIP,TripAdvisor
 TROW,T. Rowe Price Group
 TRV,The Travelers Companies Inc.
@@ -480,7 +481,6 @@ WBA,Walgreens Boots Alliance
 WDC,Western Digital
 WEC,Wec Energy Group Inc
 WFC,Wells Fargo
-WFM,Whole Foods Market
 WHR,Whirlpool Corp.
 WLTW,Willis Towers Watson
 WM,Waste Management Inc.
